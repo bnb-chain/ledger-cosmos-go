@@ -24,7 +24,7 @@ import (
 )
 
 const (
-	userCLA = 0x55
+	userCLA = 0xBC
 
 	userINSGetVersion                   = 0
 	userINSPublicKeySECP256K1           = 1
