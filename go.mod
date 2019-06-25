@@ -4,7 +4,7 @@ go 1.12
 
 require (
 	github.com/btcsuite/btcd v0.0.0-20190115013929-ed77733ec07d
-	github.com/cosmos/ledger-go v0.9.1
+	github.com/cosmos/ledger-go v0.9.2
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fortytw2/leaktest v1.3.0 // indirect
 	github.com/go-kit/kit v0.6.0 // indirect
