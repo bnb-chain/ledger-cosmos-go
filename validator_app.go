@@ -65,9 +65,10 @@ func FindLedgerTendermintValidatorApp() (*LedgerTendermintValidator, error) {
 	}
 
 	req := RequiredTendermintValidatorAppVersion()
-	err = CheckVersion(*appVersion, req)
-	if err !=nil {
-		return nil, err
+	if !CheckVersion(*appVersion, req) {
+		defer ledgerAPI.Close()
+		return nil, fmt.Errorf(
+			"version not supported. Required >v%d.%d.%d", req.Major, req.Minor, req.Patch)
 	}
 
 	return &ledgerCosmosValidatorApp, err
