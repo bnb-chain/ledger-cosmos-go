@@ -55,7 +55,7 @@ func Test_UserGetVersion(t *testing.T) {
 	assert.Equal(t, uint8(0x0), version.AppMode, "TESTING MODE ENABLED!!")
 	assert.Equal(t, uint8(0x1), version.Major, "Wrong Major version")
 	assert.Equal(t, uint8(0x1), version.Minor, "Wrong Minor version")
-	assert.Equal(t, uint8(0x0), version.Patch, "Wrong Patch version")
+	assert.Equal(t, uint8(0x4), version.Patch, "Wrong Patch version")
 }
 
 func Test_UserGetPublicKey(t *testing.T) {
@@ -67,7 +67,7 @@ func Test_UserGetPublicKey(t *testing.T) {
 
 	userApp.api.Logging = true
 
-	path := []uint32{44, 118, 0, 0, 0}
+	path := []uint32{44, 714, 0, 0, 0}
 
 	pubKey, err := userApp.GetPublicKeySECP256K1(path)
 	if err != nil {
@@ -95,8 +95,8 @@ func Test_UserShowAddresses(t *testing.T) {
 
 	userApp.api.Logging = true
 
-	hrp := "cosmos"
-	path := []uint32{44, 118, 0, 0, 0}
+	hrp := "bnb"
+	path := []uint32{44, 714, 0, 0, 0}
 
 	err = userApp.ShowAddressSECP256K1(path, hrp)
 	if err != nil {
@@ -113,19 +113,19 @@ func Test_UserPK_HDPaths(t *testing.T) {
 
 	userApp.api.Logging = true
 
-	path := []uint32{44, 118, 0, 0, 0}
+	path := []uint32{44, 714, 0, 0, 0}
 
 	expected := []string{
-		"044fef9cd7c4c63588d3b03feb5281b9d232cba34d6f3d71aee59211ffbfe1fe877bff8521bf5243e80be922e51cee0faa8346b113fdec822c4d902e42b22bc345",
-		"0460d0487a3dfce9228eee2d0d83a40f6131f551526c8e52066fe7fe1e4a509666d60da24e97777510db9b238870e184891b580610ec6dafaf12c7abffed3670c6",
-		"04a2670393d02b162d0ed06a08041e80d86be36c0564335254df7462447eb69ab3f5a54ab07a8622ab23c28e9240ce58f4015ec401d95b08221b74e2a4a209ba6d",
-		"043222fc61795077791665544a90740e8ead638a391a3b8f9261f4a226b396c042a118bb64eccd89941d73de7cb12beed5a47de61049c7fc0d4708a4a0f5637957",
-		"04f577473348d7b01e7af2f245e36b98d181bc935ec8b552cde5932b646dc7be0415b9fd94af37dc295e25e35d3840fdd3cb1d0baa411bdc00d15dca427abdff3f",
-		"0422b1a5486be0a2d5f3c5866be46e05d1bde8cda5ea1c4c77a9bc48d2fa2753bcbb49b6c9d4be25bed7fb75c2e0c43c25175e88893c4f7963398a5aac3230c79e",
-		"0477a1c826d3a03ca4ee94fc4dea6bccb2bac5f2ac0419a128c29f8e88f1ff295ac6a16c770d38ee0e55bec83e8d8e3f1b1616ce77055a928255919340053a477d",
-		"041b75c84453935ab76f8c8d0b6566c3fcc101cc5c59d7000bfc9101961e9308d9228b0af378c4e6a38eeaf18175d2b2a7ab3fad9c9a4b117775f2e4a4ac633aff",
-		"048905a42433b1d677cc8afd36861430b9a8529171b0616f733659f131c3f80221e222d162dbcde7c77be3d82b4f666c2acc1e25aaeb3e4fadfb8c7c6b1282374b",
-		"048be7f348902d8c20bc88d32294f4f3b819284548122229decd1adf1a7eb0848bc4fbd7ac5bae3a854f2bcb0831c4550f48752f630a33a088d0fd166d8d3435d9",
+		"04f937728d58ec329e41ce1a6bb447880e6b9bc20873c4e00f4a91f9ee095cb688d5d1f02a31012b6d294d8990d147c8b364e91b706052fe33b57641c9b64c9053",
+		"04a038044f970057da9a922571cd6b1f67810e793b9e6b7396309e31b6ebf35d2327c141f980ae898d5d39f4231d5004861583a304b43a129bb1512965bbe708d2",
+		"044d80837bb3f6f7a7868f92e390f5e8bc9a6093bdf6235f70c6d9d6acfa50c9e476a9964eea590e416b12f48437d4a8731a361d92a841582948141c7e203b6388",
+		"04385ee0b85b9fa059731671b5c86f9e0ac1b1a653ba771076082f18d45c94ce69f2907a9e55ae099a2018264abbe940024df09993383274ab640da938a82b76fd",
+		"0462adbcccd8f6720d1d844bd81067bd8672460539015a33ed8f932a3f750dfd77526897515247561bc0f3e740e3cf02e344f2baa76579e26e9bc0232dc4d964c1",
+		"047f6cef691c1a0361f299e744d457b8555b7e06243b9ab657e15f79f7a4bc6560fc5b946837377c258c0b1e4e3d0601a5056150f1de538da667a088efede1a4af",
+		"04021bea9dcd633288859e3158fae431939aa8bfee59632a9a745328ecd81091ee23614c2390b177b5d9523599d3bc5d34c731e830d9da4bc6cdd4a1fca47c8c36",
+		"04a25204a24a5f70e14b67fb1e0d3a0424b1f136538214ca7a5c0c9ef548b321142e909ac25070e7c583abef4d12645d469d9d1254b001497c0d6d288a90975d78",
+		"04483b48b0b6b97f8450352f92cb9336f4d9692a055afdc9ba4180077e1b284af1a2f54976b8c5dce8e9db872419158d93fdcdfa4778a18332c6594c30bb6eb1a1",
+		"040eff3c04290f3ccbf46ce1b1a710af9ef9e88858aeaf48f1f36b8fb0cf7d1201c7bacc3ebec4a2a53a8b19203a35948892852492b040262bbfecad6a3fee32d7",
 	}
 
 	for i := uint32(0); i < 10; i++ {
@@ -146,7 +146,7 @@ func Test_UserPK_HDPaths(t *testing.T) {
 			t,
 			expected[i],
 			hex.EncodeToString(pubKey),
-			"Public key 44'/118'/0'/0/%d does not match\n", i)
+			"Public key 44'/714'/0'/0/%d does not match\n", i)
 
 		_, err = secp256k1.ParsePubKey(pubKey[:], secp256k1.S256())
 		require.Nil(t, err, "Error parsing public key err: %s\n", err)
@@ -158,13 +158,11 @@ func getDummyTx() []byte {
 	dummyTx := `{
 		"account_number": 1,
 		"chain_id": "some_chain",
-		"fee": {
-			"amount": [{"amount": 10, "denom": "DEN"}],
-			"gas": 5
-		},
+		"data": "data",
 		"memo": "MEMO",
 		"msgs": ["SOMETHING"],
-		"sequence": 3
+		"sequence": 3,
+		"source": 0
 	}`
 	dummyTx = strings.Replace(dummyTx, " ", "", -1)
 	dummyTx = strings.Replace(dummyTx, "\n", "", -1)
@@ -182,7 +180,7 @@ func Test_UserSign(t *testing.T) {
 
 	userApp.api.Logging = true
 
-	path := []uint32{44, 118, 0, 0, 5}
+	path := []uint32{44, 714, 0, 0, 0}
 
 	message := getDummyTx()
 	signature, err := userApp.SignSECP256K1(path, message)
@@ -229,12 +227,12 @@ func Test_UserSign_Fails(t *testing.T) {
 
 	userApp.api.Logging = true
 
-	path := []uint32{44, 118, 0, 0, 5}
+	path := []uint32{44, 714, 0, 0, 5}
 
 	message := getDummyTx()
 	garbage := []byte{65}
 	message = append(garbage, message...)
 
 	_, err = userApp.SignSECP256K1(path, message)
-	assert.EqualError(t, err, "Unexpected character in JSON string")
+	assert.EqualError(t, err, "[APDU_CODE_DATA_INVALID] Referenced data reversibly blocked (invalidated)")
 }
