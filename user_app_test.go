@@ -19,12 +19,14 @@ package ledger_cosmos_go
 import (
 	"encoding/hex"
 	"fmt"
-	secp256k1 "github.com/btcsuite/btcd/btcec"
+	"strings"
+	"testing"
+
+	secp256k1 "github.com/btcsuite/btcd/btcec/v2"
+	"github.com/btcsuite/btcd/btcec/v2/ecdsa"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/tendermint/tendermint/crypto"
-	"strings"
-	"testing"
 )
 
 // Ledger Test Mnemonic: equip will roof matter pink blind book anxiety banner elbow sun young
@@ -82,7 +84,7 @@ func Test_UserGetPublicKey(t *testing.T) {
 
 	fmt.Printf("PUBLIC KEY: %x\n", pubKey)
 
-	_, err = secp256k1.ParsePubKey(pubKey[:], secp256k1.S256())
+	_, err = secp256k1.ParsePubKey(pubKey[:])
 	require.Nil(t, err, "Error parsing public key err: %s\n", err)
 }
 
@@ -148,7 +150,7 @@ func Test_UserPK_HDPaths(t *testing.T) {
 			hex.EncodeToString(pubKey),
 			"Public key 44'/714'/0'/0/%d does not match\n", i)
 
-		_, err = secp256k1.ParsePubKey(pubKey[:], secp256k1.S256())
+		_, err = secp256k1.ParsePubKey(pubKey[:])
 		require.Nil(t, err, "Error parsing public key err: %s\n", err)
 
 	}
@@ -199,13 +201,13 @@ func Test_UserSign(t *testing.T) {
 		return
 	}
 
-	pub2, err := secp256k1.ParsePubKey(pubKey[:], secp256k1.S256())
+	pub2, err := secp256k1.ParsePubKey(pubKey[:])
 	if err != nil {
 		t.Fatalf("[ParsePK] Error: " + err.Error())
 		return
 	}
 
-	sig2, err := secp256k1.ParseDERSignature(signature[:], secp256k1.S256())
+	sig2, err := ecdsa.ParseDERSignature(signature[:])
 	if err != nil {
 		t.Fatalf("[ParseSig] Error: " + err.Error())
 		return
